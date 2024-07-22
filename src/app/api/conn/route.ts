@@ -1,15 +1,12 @@
 import dbConnect from "@/lib/dbConnect";
 import Product from "@/models/Product";
 
-import { NextResponse } from "next/server";
-
-export async function GET() {
-  await dbConnect();
-
+export async function getData() {
   try {
-    const products = await Product.find({});
-    return NextResponse.json(products);
+    await dbConnect();
+    const products = JSON.parse(JSON.stringify(await Product.find()));
+    return { products };
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return { error: err.message };
   }
 }
