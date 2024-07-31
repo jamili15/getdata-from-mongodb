@@ -8,7 +8,7 @@ export async function getData() {
     const products = await Product.find().lean();
     return { products };
   } catch (err: any) {
-    return { error: err.message };
+    return { error: err };
   }
 }
 
