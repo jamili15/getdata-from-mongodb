@@ -9,7 +9,7 @@ export default function Home() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("/api/conn");
+      const response = await fetch("/api/withmodels");
       if (!response.ok) {
         throw new Error("Failed to fetch products");
       }
@@ -20,6 +20,8 @@ export default function Home() {
       setError(error.message);
     }
   };
+
+  console.log(products)
 
   useEffect(() => {
     fetchData();
