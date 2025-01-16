@@ -19,20 +19,25 @@ export async function GET() {
 
 // export async function GET(request: Request) {
 //   try {
-//     // Extract query parameters from the URL
 //     const url = new URL(request.url);
 //     const dbname = url.searchParams.get("dbname");
-//     const dbcollection = url.searchParams.get("dbcollection");
+//     const collectionname = url.searchParams.get("collectionname");
+//     const trackno = url.searchParams.get("trackno");
 
-//     // Validate the parameters
-//     if (!dbname || !dbcollection) {
-//       return NextResponse.json({ error: "Missing dbname or dbcollection" }, { status: 400 });
+//     if (!dbname || !collectionname) {
+//       return NextResponse.json({ error: "Missing dbname or collectionname" }, { status: 400 });
 //     }
 
 //     await dbConnect();
 //     const db = mongoose.connection.useDb(dbname);
-//     const collection = db.collection(dbcollection);
-//     const products = await collection.find({}).toArray();
+//     const collection = db.collection(collectionname);
+    
+//     const query: Record<string, any> = {};
+//     if (trackno) {
+//       query.trackno = trackno;
+//     }
+
+//     const products = await collection.find(query).toArray();
 
 //     return NextResponse.json(products);
 //   } catch (err: any) {

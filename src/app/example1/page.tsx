@@ -9,10 +9,10 @@ export default function Home() {
   const fetchData = async () => {
     try {
       const dbname = "cloud_obo";  // Replace with the actual database name
-      const dbcollection = "standalonepermit";  // Replace with the actual collection name
+      const collectionname = "standalonepermit";  // Replace with the actual collection name
 
-      // Fetch data from the API route, passing the dbname and dbcollection as query parameters
-      const response = await fetch(`/api/withoutmodels?dbname=${dbname}&dbcollection=${dbcollection}`);
+      // Fetch data from the API route, passing the dbname and collectionname as query parameters
+      const response = await fetch(`/api/withoutmodels?dbname=${dbname}&collectionname=${collectionname}`);
       if (!response.ok) {
         throw new Error("Failed to fetch products");
       }
